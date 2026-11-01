@@ -1,0 +1,3 @@
+dataset_name,code,description,status,effective_from,effective_to,replaced_by_code
+diagnosis_code,D100,Active code,active,2020-01-01,,
+diagnosis_code,D150,Old code,deprecated,2020-01-01,2025-01-01,D100

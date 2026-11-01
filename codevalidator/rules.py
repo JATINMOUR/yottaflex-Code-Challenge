@@ -1,0 +1,38 @@
+REQUIRED_EVENT_COLUMNS = [
+    "event_id",
+    "source_system",
+    "event_ts",
+    "updated_at",
+    "dataset_name",
+    "code",
+    "amount",
+]
+
+REQUIRED_REF_COLUMNS = [
+    "dataset_name",
+    "code",
+    "description",
+    "status",
+    "effective_from",
+    "effective_to",
+    "replaced_by_code",
+]
+
+VALID = "valid"
+VALID_DEPRECATED = "valid_deprecated"
+
+MALFORMED_RECORD = "MALFORMED_RECORD"
+MISSING_REQUIRED_FIELD = "MISSING_REQUIRED_FIELD"
+INVALID_TIMESTAMP = "INVALID_TIMESTAMP"
+INVALID_AMOUNT = "INVALID_AMOUNT"
+DUPLICATE_EVENT = "DUPLICATE_EVENT"
+SUPERSEDED_VERSION = "SUPERSEDED_VERSION"
+STALE_VERSION = "STALE_VERSION"
+
+UNKNOWN_REFERENCE_DATASET = "UNKNOWN_REFERENCE_DATASET"
+UNKNOWN_CODE = "UNKNOWN_CODE"
+CODE_NOT_YET_EFFECTIVE = "CODE_NOT_YET_EFFECTIVE"
+CODE_EXPIRED = "CODE_EXPIRED"
+
+REF_ACTIVE = "active"
+REF_DEPRECATED = "deprecated"

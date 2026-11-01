@@ -1,0 +1,5 @@
+event_id,source_system,event_ts,updated_at,dataset_name,code,amount
+E001,system_a,2025-03-10T09:00:00Z,2025-03-10T09:05:00Z,diagnosis_code,D100,12.50
+E002,system_a,2025-03-10T09:00:00Z,2025-03-10T09:05:00Z,diagnosis_code,D150,5.00
+E003,system_b,2025-03-10T09:00:00Z,2025-03-10T09:05:00Z,diagnosis_code,ZZZ,8.25
+E004,system_b,2025-03-10T09:00:00Z,2025-03-10T09:05:00Z,unknown_dataset,X001,3.00
