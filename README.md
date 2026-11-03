@@ -50,29 +50,8 @@ Sample result: 24 input rows -> reference v1: 8 valid / 2 valid_deprecated / 14 
 
 Architecture diagram:
 
-![Architecture Diagram]("diagram/nameArchitecture Diagram.png")
+![Architecture Diagram](./diagram/Architecture_Diagram.png)
 
-```
- reference_vN.csv --load-ref--> [validate snapshot: dates, overlaps, dangling replaced_by]
-   (full snapshot)                  | same content hash as latest? -> no-op (idempotent)
-                                    +-> new immutable ref_version + ref_code rows (old versions kept)
-
- events.csv --load-events-->  1 read + schema check (missing column => fail file; extra column => warn)
-                              2 field validation   (arity, required, ISO-8601 tz-aware ts, amount)  --+
-                              3 in-file dedupe     (exact dup / newest updated_at wins)             --+
-                              4 cross-file stale check vs event_validated (late/out-of-order)       --+ rejects
-                              5 reference check    (in-memory index: effective window, deprecated)  --+
-                              6 ONE TRANSACTION: replace this file's rejects, upsert accepted,
-                                append history, write run summary
-                              7 reconciliation assertions inside the transaction (mismatch => ROLLBACK)
-                                         |
-        pipeline_run (metrics) <---------+-->  event_validated | event_reject | event_history
-                                                         |
-                                               report (SQL re-computation, 10 checks)
-```
-
-Modules: `rules.py` (constants) · `validate.py` (pure row parsing) · `reference.py` (load + versioned lookup) ·
-`pipeline.py` (orchestration) · `report.py` (reconciliation/report) · `datagen.py` (generator) · `cli.py` · `db.py` (DDL).
 
 ## Business rules
 
