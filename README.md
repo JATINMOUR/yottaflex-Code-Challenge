@@ -48,6 +48,10 @@ Sample result: 24 input rows -> reference v1: 8 valid / 2 valid_deprecated / 14 
 
 ## Architecture / flow
 
+Architecture diagram:
+
+![Architecture Diagram]("diagram/nameArchitecture Diagram.png")
+
 ```
  reference_vN.csv --load-ref--> [validate snapshot: dates, overlaps, dangling replaced_by]
    (full snapshot)                  | same content hash as latest? -> no-op (idempotent)
