@@ -1,0 +1,111 @@
+dataset_name,code,description,status,effective_from,effective_to,replaced_by_code
+diagnosis_code,D000,diagnosis_code D000,active,2020-01-01,,
+diagnosis_code,D001,diagnosis_code D001,active,2020-01-01,,
+diagnosis_code,D002,diagnosis_code D002,active,2020-01-01,,
+diagnosis_code,D003,diagnosis_code D003,active,2020-01-01,,
+diagnosis_code,D004,diagnosis_code D004,active,2020-01-01,,
+diagnosis_code,D005,diagnosis_code D005,active,2020-01-01,,
+diagnosis_code,D006,diagnosis_code D006,active,2020-01-01,,
+diagnosis_code,D007,diagnosis_code D007,active,2020-01-01,,
+diagnosis_code,D008,diagnosis_code D008,active,2020-01-01,,
+diagnosis_code,D009,diagnosis_code D009,active,2020-01-01,,
+diagnosis_code,D010,diagnosis_code D010,active,2020-01-01,,
+diagnosis_code,D011,diagnosis_code D011,active,2020-01-01,,
+diagnosis_code,D012,diagnosis_code D012,active,2020-01-01,,
+diagnosis_code,D013,diagnosis_code D013,active,2020-01-01,,
+diagnosis_code,D014,diagnosis_code D014,active,2020-01-01,,
+diagnosis_code,D015,diagnosis_code D015,active,2020-01-01,,
+diagnosis_code,D016,diagnosis_code D016,active,2020-01-01,,
+diagnosis_code,D017,diagnosis_code D017,active,2020-01-01,,
+diagnosis_code,D018,diagnosis_code D018,active,2020-01-01,,
+diagnosis_code,D019,diagnosis_code D019,active,2020-01-01,,
+diagnosis_code,D020,diagnosis_code D020,deprecated,2020-01-01,2026-03-01,D025
+diagnosis_code,D021,diagnosis_code D021,deprecated,2020-01-01,2026-03-01,D026
+diagnosis_code,D022,diagnosis_code D022,deprecated,2020-01-01,2026-03-01,D027
+diagnosis_code,D023,diagnosis_code D023,deprecated,2020-01-01,2026-03-01,D028
+diagnosis_code,D024,diagnosis_code D024,deprecated,2020-01-01,2026-03-01,D029
+diagnosis_code,D025,diagnosis_code D025,active,2020-01-01,,
+diagnosis_code,D026,diagnosis_code D026,active,2020-01-01,,
+diagnosis_code,D027,diagnosis_code D027,active,2020-01-01,,
+diagnosis_code,D028,diagnosis_code D028,active,2020-01-01,,
+diagnosis_code,D029,diagnosis_code D029,active,2020-01-01,,
+diagnosis_code,D030,diagnosis_code D030,deprecated,2020-01-01,2026-01-01,D000
+diagnosis_code,D031,diagnosis_code D031,deprecated,2020-01-01,2026-01-01,D001
+diagnosis_code,D032,diagnosis_code D032,deprecated,2020-01-01,2026-01-01,D002
+diagnosis_code,D033,diagnosis_code D033,deprecated,2020-01-01,2026-01-01,D003
+diagnosis_code,D034,diagnosis_code D034,deprecated,2020-01-01,2026-01-01,D004
+diagnosis_code,D035,diagnosis_code D035,deprecated,2020-01-01,2026-01-01,D005
+diagnosis_code,D036,diagnosis_code D036,deprecated,2020-01-01,2026-01-01,D006
+diagnosis_code,D037,diagnosis_code D037,deprecated,2020-01-01,2026-01-01,D007
+diagnosis_code,D038,diagnosis_code D038,deprecated,2020-01-01,2026-01-01,D008
+diagnosis_code,D039,diagnosis_code D039,deprecated,2020-01-01,2026-01-01,D009
+diagnosis_code,D040,diagnosis_code D040,deprecated,2020-01-01,2024-06-01,D000
+diagnosis_code,D041,diagnosis_code D041,deprecated,2020-01-01,2024-06-01,D001
+diagnosis_code,D042,diagnosis_code D042,deprecated,2020-01-01,2024-06-01,D002
+diagnosis_code,D043,diagnosis_code D043,deprecated,2020-01-01,2024-06-01,D003
+diagnosis_code,D044,diagnosis_code D044,deprecated,2020-01-01,2024-06-01,D004
+diagnosis_code,D045,diagnosis_code D045,active,2026-06-01,,
+diagnosis_code,D046,diagnosis_code D046,active,2026-06-01,,
+diagnosis_code,D047,diagnosis_code D047,active,2026-06-01,,
+diagnosis_code,D048,diagnosis_code D048,active,2026-06-01,,
+diagnosis_code,D049,diagnosis_code D049,active,2026-06-01,,
+diagnosis_code,D050,diagnosis_code D050 (new),active,2025-01-01,,
+diagnosis_code,D051,diagnosis_code D051 (new),active,2025-01-01,,
+diagnosis_code,D052,diagnosis_code D052 (new),active,2025-01-01,,
+diagnosis_code,D053,diagnosis_code D053 (new),active,2025-01-01,,
+diagnosis_code,D054,diagnosis_code D054 (new),active,2025-01-01,,
+procedure_code,P000,procedure_code P000,active,2020-01-01,,
+procedure_code,P001,procedure_code P001,active,2020-01-01,,
+procedure_code,P002,procedure_code P002,active,2020-01-01,,
+procedure_code,P003,procedure_code P003,active,2020-01-01,,
+procedure_code,P004,procedure_code P004,active,2020-01-01,,
+procedure_code,P005,procedure_code P005,active,2020-01-01,,
+procedure_code,P006,procedure_code P006,active,2020-01-01,,
+procedure_code,P007,procedure_code P007,active,2020-01-01,,
+procedure_code,P008,procedure_code P008,active,2020-01-01,,
+procedure_code,P009,procedure_code P009,active,2020-01-01,,
+procedure_code,P010,procedure_code P010,active,2020-01-01,,
+procedure_code,P011,procedure_code P011,active,2020-01-01,,
+procedure_code,P012,procedure_code P012,active,2020-01-01,,
+procedure_code,P013,procedure_code P013,active,2020-01-01,,
+procedure_code,P014,procedure_code P014,active,2020-01-01,,
+procedure_code,P015,procedure_code P015,active,2020-01-01,,
+procedure_code,P016,procedure_code P016,active,2020-01-01,,
+procedure_code,P017,procedure_code P017,active,2020-01-01,,
+procedure_code,P018,procedure_code P018,active,2020-01-01,,
+procedure_code,P019,procedure_code P019,active,2020-01-01,,
+procedure_code,P020,procedure_code P020,deprecated,2020-01-01,2026-03-01,P025
+procedure_code,P021,procedure_code P021,deprecated,2020-01-01,2026-03-01,P026
+procedure_code,P022,procedure_code P022,deprecated,2020-01-01,2026-03-01,P027
+procedure_code,P023,procedure_code P023,deprecated,2020-01-01,2026-03-01,P028
+procedure_code,P024,procedure_code P024,deprecated,2020-01-01,2026-03-01,P029
+procedure_code,P025,procedure_code P025,active,2020-01-01,,
+procedure_code,P026,procedure_code P026,active,2020-01-01,,
+procedure_code,P027,procedure_code P027,active,2020-01-01,,
+procedure_code,P028,procedure_code P028,active,2020-01-01,,
+procedure_code,P029,procedure_code P029,active,2020-01-01,,
+procedure_code,P030,procedure_code P030,deprecated,2020-01-01,2026-01-01,P000
+procedure_code,P031,procedure_code P031,deprecated,2020-01-01,2026-01-01,P001
+procedure_code,P032,procedure_code P032,deprecated,2020-01-01,2026-01-01,P002
+procedure_code,P033,procedure_code P033,deprecated,2020-01-01,2026-01-01,P003
+procedure_code,P034,procedure_code P034,deprecated,2020-01-01,2026-01-01,P004
+procedure_code,P035,procedure_code P035,deprecated,2020-01-01,2026-01-01,P005
+procedure_code,P036,procedure_code P036,deprecated,2020-01-01,2026-01-01,P006
+procedure_code,P037,procedure_code P037,deprecated,2020-01-01,2026-01-01,P007
+procedure_code,P038,procedure_code P038,deprecated,2020-01-01,2026-01-01,P008
+procedure_code,P039,procedure_code P039,deprecated,2020-01-01,2026-01-01,P009
+procedure_code,P040,procedure_code P040,deprecated,2020-01-01,2024-06-01,P000
+procedure_code,P041,procedure_code P041,deprecated,2020-01-01,2024-06-01,P001
+procedure_code,P042,procedure_code P042,deprecated,2020-01-01,2024-06-01,P002
+procedure_code,P043,procedure_code P043,deprecated,2020-01-01,2024-06-01,P003
+procedure_code,P044,procedure_code P044,deprecated,2020-01-01,2024-06-01,P004
+procedure_code,P045,procedure_code P045,active,2026-06-01,,
+procedure_code,P046,procedure_code P046,active,2026-06-01,,
+procedure_code,P047,procedure_code P047,active,2026-06-01,,
+procedure_code,P048,procedure_code P048,active,2026-06-01,,
+procedure_code,P049,procedure_code P049,active,2026-06-01,,
+procedure_code,P050,procedure_code P050 (new),active,2025-01-01,,
+procedure_code,P051,procedure_code P051 (new),active,2025-01-01,,
+procedure_code,P052,procedure_code P052 (new),active,2025-01-01,,
+procedure_code,P053,procedure_code P053 (new),active,2025-01-01,,
+procedure_code,P054,procedure_code P054 (new),active,2025-01-01,,

@@ -1,0 +1,10 @@
+rows requested=100000 actual_rows=100000 seed=42
+generate: 3.60s
+load_events (first run):  9.47s = 10,558 rows/s
+load_events (rerun, same input): 14.39s = 6,950 rows/s
+stage seconds (first run): {"read_and_index": 0.2797, "field_validation": 3.6981, "dedupe": 0.2412, "stale_check": 0.1106, "reference_check": 0.4835, "publish": 3.6385}
+outcome: valid=61903 valid_deprecated=9973 rejected=28124
+
+Optimisation: reference lookup on 50,000 rows
+  naive  (1 SQL query per row):            0.763s
+  in-memory index (build 0.5 ms + lookups): 0.177s  -> 4.3x faster

@@ -1,84 +1,102 @@
-import csv
-import hashlib
-import io
-from datetime import datetime, timezone
-from decimal import Decimal, InvalidOperation
+import unittest
+from datetime import date
+
+from codevalidator import rules
+from codevalidator.reference import RefIndex, Window
+from codevalidator.validate import RecordError, parse_amount, parse_event, parse_ts
 
 
-class RecordError(ValueError):
-    def __init__(self, reason, detail):
-        super().__init__(detail)
-        self.reason = reason
-        self.detail = detail
+INDEXES = {
+    column: position
+    for position, column in enumerate(rules.REQUIRED_EVENT_COLUMNS)
+}
 
 
-def parse_ts(value):
-    value = value.strip()
-
-    if value.endswith("Z"):
-        value = value[:-1] + "+00:00"
-
-    parsed = datetime.fromisoformat(value)
-
-    if parsed.tzinfo is None:
-        raise ValueError("timestamp must include timezone or Z")
-
-    return parsed.astimezone(timezone.utc)
-
-
-def parse_amount(value):
-    amount = Decimal(value.strip())
-
-    if not amount.is_finite() or amount < 0:
-        raise ValueError("amount must be a non-negative number")
-
-    cents = amount * 100
-
-    if cents != cents.to_integral_value():
-        raise ValueError("amount cannot have more than 2 decimal places")
-
-    return int(cents)
-
-
-def compute_record_hash(fields):
-    payload = "\x1f".join(fields).encode("utf-8")
-    return hashlib.sha256(payload).hexdigest()
-
-
-def parse_event(fields, column_indexes):
+def make_row(**changes):
     values = {
-        name: fields[index].strip()
-        for name, index in column_indexes.items()
+        "event_id": "E1",
+        "source_system": "system_a",
+        "event_ts": "2025-03-10T09:00:00Z",
+        "updated_at": "2025-03-10T09:05:00Z",
+        "dataset_name": "diagnosis_code",
+        "code": "d100",
+        "amount": "12.50",
     }
-
-    required = ("event_id", "source_system", "event_ts", "updated_at",
-                "dataset_name", "code", "amount")
-
-    for name in required:
-        if not values[name]:
-            raise RecordError("MISSING_REQUIRED_FIELD", name)
-
-    try:
-        event_ts = parse_ts(values["event_ts"])
-        updated_at = parse_ts(values["updated_at"])
-    except ValueError as exc:
-        raise RecordError("INVALID_TIMESTAMP", str(exc)) from exc
-
-    try:
-        amount_cents = parse_amount(values["amount"])
-    except (ValueError, InvalidOperation) as exc:
-        raise RecordError("INVALID_AMOUNT", str(exc)) from exc
-
-    values["dataset_name"] = values["dataset_name"].lower()
-    values["code"] = values["code"].upper()
-    values["event_ts"] = event_ts
-    values["updated_at"] = updated_at
-    values["amount_cents"] = amount_cents
-
-    return values
+    values.update(changes)
+    return [values[column] for column in rules.REQUIRED_EVENT_COLUMNS]
 
 
-def raw_record(fields):
-    buffer = io.StringIO()
-    csv.writer(buffer).writerow(fields)
-    return buffer.getvalue().strip()
+class ValidatorTests(unittest.TestCase):
+    def test_valid_row_is_normalized(self):
+        event = parse_event(2, make_row(), 7, INDEXES)
+        self.assertEqual(event.code, "D100")
+        self.assertEqual(event.amount_cents, 1250)
+
+    def test_timestamp_requires_timezone(self):
+        with self.assertRaises(ValueError):
+            parse_ts("2025-03-10T09:00:00")
+
+    def test_timestamp_is_converted_to_utc(self):
+        event = parse_event(
+            2,
+            make_row(event_ts="2025-03-10T01:00:00+05:30"),
+            7,
+            INDEXES,
+        )
+        self.assertEqual(event.event_ts, "2025-03-09T19:30:00Z")
+
+    def test_amount_is_converted_to_cents(self):
+        self.assertEqual(parse_amount("7.50"), 750)
+
+    def test_invalid_amount_is_rejected(self):
+        with self.assertRaises(ValueError):
+            parse_amount("-1.00")
+
+    def test_invalid_row_has_reject_reason(self):
+        with self.assertRaises(RecordError) as error:
+            parse_event(2, make_row(code=""), 7, INDEXES)
+
+        self.assertEqual(error.exception.reason, rules.MISSING_REQUIRED_FIELD)
+
+
+class ReferenceDateTests(unittest.TestCase):
+    def setUp(self):
+        active = Window(date(2020, 1, 1), None, "active", None, 1)
+        old = Window(
+            date(2020, 1, 1),
+            date(2025, 1, 1),
+            "deprecated",
+            "A",
+            1,
+        )
+        future = Window(date(2026, 6, 1), None, "active", None, 1)
+
+        self.index = RefIndex(
+            {
+                ("codes", "A"): [active],
+                ("codes", "OLD"): [old],
+                ("codes", "FUTURE"): [future],
+            },
+            {"codes": 1},
+        )
+
+    def test_effective_start_date_is_inclusive(self):
+        result = self.index.classify("codes", "FUTURE", date(2026, 6, 1))
+        self.assertEqual(result.status, rules.VALID)
+
+    def test_effective_end_date_is_exclusive(self):
+        result = self.index.classify("codes", "OLD", date(2025, 1, 1))
+        self.assertEqual(result.reason_code, rules.CODE_EXPIRED)
+
+    def test_deprecated_code_has_replacement(self):
+        result = self.index.classify("codes", "OLD", date(2024, 1, 1))
+        self.assertEqual(result.status, rules.VALID_DEPRECATED)
+        self.assertEqual(result.replaced_by, "A")
+
+    def test_unknown_code_is_rejected(self):
+        result = self.index.classify("codes", "MISSING", date(2025, 1, 1))
+        self.assertEqual(result.reason_code, rules.UNKNOWN_CODE)
+
+
+if __name__ == "__main__":
+    unittest.main()

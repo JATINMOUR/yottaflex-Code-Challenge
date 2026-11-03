@@ -1,0 +1,9 @@
+﻿py : usage: codevalidator [-h] [--log-file LOG_FILE] [-v]
+At line:1 char:1
++ py -m codevalidator report      --db out\big.db --input out\data\even ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (usage: codevali... LOG_FILE] [-v]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+                     {init,load-ref,load-events,report,generate,demo} ...
+codevalidator: error: unrecognized arguments: py -m unittest discover -s tests -t . -v

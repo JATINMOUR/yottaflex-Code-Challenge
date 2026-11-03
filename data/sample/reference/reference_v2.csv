@@ -1,0 +1,11 @@
+dataset_name,code,description,status,effective_from,effective_to,replaced_by_code
+diagnosis_code,D100,Hypertension,active,2020-01-01,,
+diagnosis_code,D200,Type 2 diabetes,deprecated,2020-01-01,2026-01-01,D210
+diagnosis_code,D210,Type 2 diabetes (revised),active,2025-06-01,,
+diagnosis_code,D150,Legacy asthma code,deprecated,2020-01-01,2025-01-01,D250
+diagnosis_code,D250,Asthma,active,2024-07-01,,
+diagnosis_code,D300,Legacy code retired mid-2024,deprecated,2020-01-01,2024-06-01,D100
+diagnosis_code,D900,Future code,active,2026-06-01,,
+procedure_code,P100,Blood test,active,2020-01-01,,
+procedure_code,P200,X-ray,deprecated,2020-01-01,2025-03-01,P300
+procedure_code,P300,X-ray (digital),active,2025-01-01,,
